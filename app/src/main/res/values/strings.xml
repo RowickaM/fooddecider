@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DinnerDecider</string>
+    <string name="type_new_food">Type new food</string>
+    <string name="app_logo">app logo</string>
+    <string name="decide">Decide!</string>
+    <string name="add_food">Add food</string>
+</resources>
