@@ -1,8 +1,10 @@
 package com.gunginr.dinnerdecider.controller
 
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.gunginr.dinnerdecider.R
 import com.gunginr.dinnerdecider.util.SHARED_PREF_KEY
 import com.gunginr.dinnerdecider.util.readFromSharedPref
@@ -28,15 +30,8 @@ class MainActivity : AppCompatActivity() {
             decideButton.setBackgroundColor(resources.getColor(R.color.greyLight));
         }
 
-        decideButton.setOnClickListener {
-            decideButton.isEnabled = false
-            val index = Random.nextInt(listOfFood.count());
-            result.text = listOfFood[index]
 
-            decideButton.isEnabled = true
-        }
-
-        newFoodButton.setOnClickListener {
+        newFoodButton.setOnClickListener{
             val newFood = newFoodEditText.text.toString();
 
             newFoodButton.isEnabled = false
@@ -52,5 +47,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+   fun deciderBtn(view: View){
+        decideButton.isEnabled = false
+        val index = Random.nextInt(listOfFood.count());
+        result.text = listOfFood[index]
+        decideButton.isEnabled = true
+    }
+
+    fun toEdit(view: View){
+        startActivity(Intent(this, ShowListActivity::class.java))
+    }
 
 }
