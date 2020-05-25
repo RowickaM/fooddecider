@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".controller.MainActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_h25"
@@ -28,7 +28,7 @@
         app:layout_constraintGuide_percent="0.55" />
 
     <EditText
-        android:id="@+id/new_food_editext"
+        android:id="@+id/newFoodEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_h55" />
 
     <Button
-        android:id="@+id/new_food_button"
+        android:id="@+id/newFoodButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -58,16 +58,17 @@
         android:textColor="@color/greenLight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_food_editext" />
+        app:layout_constraintTop_toBottomOf="@+id/newFoodEditText" />
 
     <TextView
         android:id="@+id/result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/arvo"
         android:textAlignment="textStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/greenDark"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +87,7 @@
         app:layout_constraintWidth_percent=".3" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/decideButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/greenDark"

@@ -6,4 +6,5 @@
     <color name="greenLight">#ccd7dc</color>
     <color name="greenDark">#5a7e8c</color>
     <color name="grey">#333333</color>
+    <color name="greyLight">#808080</color>
 </resources>
