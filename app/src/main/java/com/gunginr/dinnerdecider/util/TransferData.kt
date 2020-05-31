@@ -12,13 +12,10 @@ fun writeToSharedPref(context: Context, list: ArrayList<String>){
     val editor = context.getSharedPreferences(SHARED_PREF_KEY, AppCompatActivity.MODE_PRIVATE).edit()
     val json = gson.toJson(list)
 
-    editor.putString(LIST_DINNER_KEY, json)
-    if(editor.commit()){
-        Toast.makeText(context, "dodano do listy", Toast.LENGTH_SHORT).show()
-    }
+    editor.putString(LIST_DINNER_KEY, json).commit()
 }
 
-fun readFromSharedPref(context: Context): ArrayList<String>?{
+fun readFromSharedPref(context: Context): ArrayList<String>{
     val sharedPref = context.getSharedPreferences(SHARED_PREF_KEY, AppCompatActivity.MODE_PRIVATE)
     val json = sharedPref.getString(LIST_DINNER_KEY, "")
     if(json==""){
@@ -27,5 +24,5 @@ fun readFromSharedPref(context: Context): ArrayList<String>?{
         val type = object : TypeToken<List<String>>() {}.type
         return gson.fromJson(json, type)
     }
-    return null
+    return arrayListOf()
 }
