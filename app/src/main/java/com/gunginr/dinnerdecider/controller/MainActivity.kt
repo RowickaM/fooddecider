@@ -20,10 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val sharedPref: SharedPreferences = getSharedPreferences(SHARED_PREF_KEY, MODE_PRIVATE)
-        val editor = sharedPref.edit()
-
-        listOfFood = readFromSharedPref(this, sharedPref)?: arrayListOf()
+        listOfFood = readFromSharedPref(this)?: arrayListOf()
 
         if (listOfFood.count() == 0){
             decideButton.isEnabled = false
@@ -38,12 +35,15 @@ class MainActivity : AppCompatActivity() {
             newFoodEditText.text.clear();
 
             listOfFood.add(newFood)
-            writeToSharedPref(this, listOfFood, editor)
+            writeToSharedPref(this, listOfFood)
 
             decideButton.isEnabled = true
             decideButton.setBackgroundColor(resources.getColor(R.color.greenDark));
 
             newFoodButton.isEnabled = true
+        }
+        toList.setOnClickListener {
+            startActivity(Intent(this, ShowSaveActivity::class.java))
         }
     }
 
@@ -53,10 +53,6 @@ class MainActivity : AppCompatActivity() {
         val index = Random.nextInt(listOfFood.count());
         result.text = listOfFood[index]
         decideButton.isEnabled = true
-    }
-
-    fun toEdit(view: View){
-        startActivity(Intent(this, ShowListActivity::class.java))
     }
 
 }
