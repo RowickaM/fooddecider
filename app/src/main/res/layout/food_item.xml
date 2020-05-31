@@ -25,5 +25,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/name"
-        android:src="@drawable/ic_bin" />
+        android:src="@drawable/ic_bin"
+        tools:ignore="ContentDescription" />
 </androidx.constraintlayout.widget.ConstraintLayout>

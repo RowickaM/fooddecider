@@ -34,7 +34,6 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:ems="10"
-        android:fontFamily="@font/arvo"
         android:hint="@string/type_new_food"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
@@ -52,7 +51,6 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:background="@color/greenDark"
-        android:fontFamily="@font/arvo"
         android:text="@string/add_food"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/greenLight"
@@ -65,7 +63,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/arvo"
         android:textAlignment="textStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/greenDark"
@@ -91,7 +88,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/greenDark"
-        android:fontFamily="@font/arvo"
         android:onClick="deciderBtn"
         android:text="@string/decide"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -108,6 +104,7 @@
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_eye" />
+        android:src="@drawable/ic_eye"
+        tools:ignore="ContentDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

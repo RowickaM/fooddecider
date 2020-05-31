@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/greenLight</item>
         <item name="android:textColor">@color/grey</item>
+        <item name="fontFamily">@font/arvo</item>
     </style>
 
 </resources>

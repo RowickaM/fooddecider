@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="List:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:text="@string/list"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,7 +34,7 @@
         android:id="@+id/emptyListInfo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="The list is empty"
+        android:text="@string/the_list_is_empty"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"

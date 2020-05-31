@@ -4,7 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.gunginr.dinnerdecider.R
+import com.gunginr.dinnerdecider.util.isExist
 import com.gunginr.dinnerdecider.util.readFromSharedPref
 import com.gunginr.dinnerdecider.util.writeToSharedPref
 import kotlinx.android.synthetic.main.activity_main.*
@@ -22,16 +24,20 @@ class MainActivity : AppCompatActivity() {
         newFoodButton.setOnClickListener {
             val newFood = newFoodEditText.text.toString();
 
-            newFoodButton.isEnabled = false
-            newFoodEditText.text.clear();
+            if (isExist(newFood, listOfFood)) {
+                Toast.makeText(this, getString(R.string.already_added), Toast.LENGTH_SHORT).show()
+            } else {
+                newFoodButton.isEnabled = false
+                newFoodEditText.text.clear();
 
-            listOfFood.add(newFood)
-            writeToSharedPref(this, listOfFood)
+                listOfFood.add(newFood)
+                writeToSharedPref(this, listOfFood)
 
-            decideButton.isEnabled = true
-            decideButton.setBackgroundColor(resources.getColor(R.color.greenDark));
+                decideButton.isEnabled = true
+                decideButton.setBackgroundColor(resources.getColor(R.color.greenDark));
 
-            newFoodButton.isEnabled = true
+                newFoodButton.isEnabled = true
+            }
         }
         toList.setOnClickListener {
             startActivity(Intent(this, ShowSaveActivity::class.java))
@@ -49,7 +55,6 @@ class MainActivity : AppCompatActivity() {
         result.text = listOfFood[index]
         decideButton.isEnabled = true
     }
-
 
     private fun fillData() {
         listOfFood = readFromSharedPref(this)
