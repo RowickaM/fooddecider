@@ -22,12 +22,12 @@ class ShowSaveActivity : AppCompatActivity() {
         list = readFromSharedPref(this)
 
         if (list.size == 0) {
-                showList(false)
-            } else {
-                showList(true)
-                bindList()
-                foodList.adapter = adapter
-            }
+            showList(false)
+        } else {
+            showList(true)
+            bindList()
+            foodList.adapter = adapter
+        }
 
         foodList.layoutManager = LinearLayoutManager(this)
         foodList.setHasFixedSize(true)
@@ -48,8 +48,12 @@ class ShowSaveActivity : AppCompatActivity() {
     }
 
     private fun removeClick(position: Int) {
-            list.removeAt(position)
-            writeToSharedPref(this, list)
+        list.removeAt(position)
+        writeToSharedPref(this, list)
         adapter.notifyDataSetChanged()
+
+        if(list.size == 0){
+            showList(false)
+        }
     }
 }

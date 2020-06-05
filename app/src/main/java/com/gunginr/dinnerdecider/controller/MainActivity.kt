@@ -24,7 +24,9 @@ class MainActivity : AppCompatActivity() {
         newFoodButton.setOnClickListener {
             val newFood = newFoodEditText.text.toString();
 
-            if (isExist(newFood, listOfFood)) {
+            if (newFood.trim() == "") {
+                Toast.makeText(this, getString(R.string.empty_string), Toast.LENGTH_SHORT).show()
+            } else if (isExist(newFood, listOfFood)) {
                 Toast.makeText(this, getString(R.string.already_added), Toast.LENGTH_SHORT).show()
             } else {
                 newFoodButton.isEnabled = false

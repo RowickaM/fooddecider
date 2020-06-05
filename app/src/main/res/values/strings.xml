@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DinnerDecider</string>
+    <string name="app_name">Food Decider</string>
     <string name="type_new_food">Type new food</string>
     <string name="app_logo">app logo</string>
     <string name="decide">Decide!</string>
@@ -8,4 +8,5 @@
     <string name="list">List:</string>
     <string name="empty_list">You don\'t hav any food/restaurant. Please add something.</string>
     <string name="already_added">This food has already been added.</string>
+    <string name="empty_string">Please type something.</string>
 </resources>
