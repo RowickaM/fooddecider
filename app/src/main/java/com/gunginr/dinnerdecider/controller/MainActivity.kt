@@ -5,10 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.google.android.material.snackbar.Snackbar
 import com.gunginr.dinnerdecider.R
-import com.gunginr.dinnerdecider.util.isExist
-import com.gunginr.dinnerdecider.util.readFromSharedPref
-import com.gunginr.dinnerdecider.util.writeToSharedPref
+import com.gunginr.dinnerdecider.util.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
@@ -21,13 +20,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         fillData()
 
+
         newFoodButton.setOnClickListener {
             val newFood = newFoodEditText.text.toString();
 
             if (newFood.trim() == "") {
-                Toast.makeText(this, getString(R.string.empty_string), Toast.LENGTH_SHORT).show()
+                createInfoSnackBar(this, getString(R.string.empty_string), getString(android.R.string.ok)){
+                }
             } else if (isExist(newFood, listOfFood)) {
-                Toast.makeText(this, getString(R.string.already_added), Toast.LENGTH_SHORT).show()
+                createErrorSnackBar(this, getString(R.string.already_added))
             } else {
                 newFoodButton.isEnabled = false
                 newFoodEditText.text.clear();

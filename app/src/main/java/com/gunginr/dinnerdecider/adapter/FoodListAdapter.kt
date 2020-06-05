@@ -32,7 +32,7 @@ class FoodListAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context)
-            .inflate(R.layout.food_item, parent, false)
+            .inflate(R.layout.item_food, parent, false)
         return ViewHolder(view, removeClick)
     }
 

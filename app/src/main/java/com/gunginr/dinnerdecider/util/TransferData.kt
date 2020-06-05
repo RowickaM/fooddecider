@@ -1,5 +1,6 @@
 package com.gunginr.dinnerdecider.util
 
+import android.app.Activity
 import android.content.Context
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -19,7 +20,7 @@ fun readFromSharedPref(context: Context): ArrayList<String>{
     val sharedPref = context.getSharedPreferences(SHARED_PREF_KEY, AppCompatActivity.MODE_PRIVATE)
     val json = sharedPref.getString(LIST_DINNER_KEY, "")
     if(json==""){
-        Toast.makeText(context, context.getString(R.string.empty_list), Toast.LENGTH_SHORT).show()
+        createInfoSnackBar(context as Activity, context.getString(R.string.empty_list))
     }else{
         val type = object : TypeToken<List<String>>() {}.type
         return gson.fromJson(json, type)
