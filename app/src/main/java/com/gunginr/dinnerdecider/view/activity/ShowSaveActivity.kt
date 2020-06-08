@@ -1,11 +1,13 @@
-package com.gunginr.dinnerdecider.controller
+package com.gunginr.dinnerdecider.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gunginr.dinnerdecider.R
-import com.gunginr.dinnerdecider.adapter.FoodListAdapter
+import com.gunginr.dinnerdecider.view.adapter.FoodListAdapter
+import com.gunginr.dinnerdecider.util.createInfoSnackBar
 import com.gunginr.dinnerdecider.util.readFromSharedPref
 import com.gunginr.dinnerdecider.util.writeToSharedPref
 import kotlinx.android.synthetic.main.activity_show_save.*
@@ -14,6 +16,8 @@ class ShowSaveActivity : AppCompatActivity() {
 
     lateinit var adapter: FoodListAdapter
     lateinit var list: ArrayList<String>
+    private var wasChange = false
+    private var doubleBackPress = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +48,12 @@ class ShowSaveActivity : AppCompatActivity() {
     }
 
     private fun bindList() {
-        adapter = FoodListAdapter(this, list) { removeClick(it) }
+        adapter = FoodListAdapter(
+            this,
+            list,
+            { removeClick(it) },
+            { i, name -> editClick(i, name) }
+        )
     }
 
     private fun removeClick(position: Int) {
@@ -52,8 +61,27 @@ class ShowSaveActivity : AppCompatActivity() {
         writeToSharedPref(this, list)
         adapter.notifyDataSetChanged()
 
-        if(list.size == 0){
+        if (list.size == 0) {
             showList(false)
         }
     }
+
+    private fun editClick(position: Int, name: String) {
+        list.removeAt(position)
+        list.add(position, name)
+        writeToSharedPref(this, list)
+        adapter.notifyDataSetChanged()
+    }
+
+    override fun onBackPressed() {
+        if (doubleBackPress) {
+            super.onBackPressed()
+        }
+        createInfoSnackBar(
+            this,
+            "Jeśli dokonałeś zmian musisz je zapisać!")
+        doubleBackPress = true
+        Handler().postDelayed({ doubleBackPress = false }, 1500)
+    }
+
 }

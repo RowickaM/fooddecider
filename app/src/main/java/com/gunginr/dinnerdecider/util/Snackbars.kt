@@ -78,7 +78,7 @@ fun createInfoSnackBar(
         Snackbar.LENGTH_INDEFINITE
     ).setAction(actionText) { action() }
 
-    snackbar.setBackgroundTint(context.resources.getColor(R.color.greyLight))
+    snackbar.setBackgroundTint(context.resources.getColor(R.color.grey))
     snackbar.setTextColor(context.resources.getColor(R.color.white))
     snackbar.setActionTextColor(context.resources.getColor(R.color.white))
     snackbar.show()
@@ -92,7 +92,7 @@ fun createInfoSnackBar(context: Activity, message: String) {
         Snackbar.LENGTH_SHORT
     )
 
-    snackbar.setBackgroundTint(context.resources.getColor(R.color.greyLight))
+    snackbar.setBackgroundTint(context.resources.getColor(R.color.grey))
     snackbar.setTextColor(context.resources.getColor(R.color.white))
     snackbar.show()
 }

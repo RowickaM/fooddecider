@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controller.ShowSaveActivity" />
-        <activity android:name=".controller.MainActivity">
+        <activity android:name="com.gunginr.dinnerdecider.view.activity.ShowSaveActivity" />
+        <activity android:name="com.gunginr.dinnerdecider.view.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

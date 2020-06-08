@@ -9,4 +9,5 @@
     <string name="empty_list">You don\'t hav any food/restaurant. Please add something.</string>
     <string name="already_added">This food has already been added.</string>
     <string name="empty_string">Please type something.</string>
+    <string name="toggle_menu">toggle menu</string>
 </resources>
