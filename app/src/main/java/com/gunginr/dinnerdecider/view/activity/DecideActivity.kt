@@ -1,5 +1,7 @@
 package com.gunginr.dinnerdecider.view.activity
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,11 +9,15 @@ import android.view.View
 import androidx.core.view.GravityCompat
 import com.gunginr.dinnerdecider.R
 import com.gunginr.dinnerdecider.util.*
+import com.gunginr.dinnerdecider.util.handlers.HandleBundle
+import com.gunginr.dinnerdecider.util.language.Localization
 import com.gunginr.dinnerdecider.util.navigation.AppToolbar
 import com.gunginr.dinnerdecider.util.snackbars.createErrorSnackBar
 import com.gunginr.dinnerdecider.util.snackbars.createInfoSnackBar
+import com.gunginr.dinnerdecider.util.storagedata.Language.getCurrentLanguage
 import com.gunginr.dinnerdecider.util.storagedata.readFromSharedPref
 import com.gunginr.dinnerdecider.util.storagedata.writeToSharedPref
+import com.gunginr.dinnerdecider.util.variables.LANGUAGE_BUNDLE_SUCCESS
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
@@ -19,9 +25,15 @@ class DecideActivity : AppCompatActivity() {
 
     private lateinit var listOfFood: ArrayList<String>
 
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(Localization.applyLanguage(newBase, getCurrentLanguage(newBase)))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        HandleBundle.handleBundleInformation(this, LANGUAGE_BUNDLE_SUCCESS)
 
         fillData()
 
@@ -98,4 +110,5 @@ class DecideActivity : AppCompatActivity() {
         super.onRestart()
         fillData()
     }
+
 }

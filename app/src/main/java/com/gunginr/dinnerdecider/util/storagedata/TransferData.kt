@@ -8,18 +8,18 @@ import com.google.gson.reflect.TypeToken
 import com.gunginr.dinnerdecider.R
 import com.gunginr.dinnerdecider.util.snackbars.createInfoSnackBar
 import com.gunginr.dinnerdecider.util.variables.LIST_DINNER_KEY
-import com.gunginr.dinnerdecider.util.variables.SHARED_PREF_KEY
+import com.gunginr.dinnerdecider.util.variables.SHARED_PREF_KEY_DINNER
 
 val gson = Gson()
 fun writeToSharedPref(context: Context, list: ArrayList<String>){
-    val editor = context.getSharedPreferences(SHARED_PREF_KEY, AppCompatActivity.MODE_PRIVATE).edit()
+    val editor = context.getSharedPreferences(SHARED_PREF_KEY_DINNER, AppCompatActivity.MODE_PRIVATE).edit()
     val json = gson.toJson(list)
 
     editor.putString(LIST_DINNER_KEY, json).commit()
 }
 
 fun readFromSharedPref(context: Context): ArrayList<String>{
-    val sharedPref = context.getSharedPreferences(SHARED_PREF_KEY, AppCompatActivity.MODE_PRIVATE)
+    val sharedPref = context.getSharedPreferences(SHARED_PREF_KEY_DINNER, AppCompatActivity.MODE_PRIVATE)
     val json = sharedPref.getString(LIST_DINNER_KEY, "")
     if(json==""){
         createInfoSnackBar(

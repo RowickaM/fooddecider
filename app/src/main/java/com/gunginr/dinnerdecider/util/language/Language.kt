@@ -1,3 +1,5 @@
 package com.gunginr.dinnerdecider.util.language
 
-class Language(val name: String, val image: String)
+import com.gunginr.dinnerdecider.util.storagedata.LanguageShort
+
+class Language(val name: String, val image: String, val short: LanguageShort)

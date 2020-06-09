@@ -6,22 +6,30 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.gunginr.dinnerdecider.R
 import com.gunginr.dinnerdecider.util.getResourceId
 import com.gunginr.dinnerdecider.util.language.Language
+import com.gunginr.dinnerdecider.util.storagedata.LanguageShort
 
 class LanguageSelectorAdapter(
-    val activity: Activity,
-    val list: ArrayList<Language>
-): RecyclerView.Adapter<LanguageSelectorAdapter.ViewHolder>(){
+    private val activity: Activity,
+    private val list: ArrayList<Language>,
+    private val changeLanguage: (LanguageShort) -> Unit
+) : RecyclerView.Adapter<LanguageSelectorAdapter.ViewHolder>() {
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        private val imageView: ImageView = itemView.findViewById<ImageView>(R.id.image)
-        private val textView: TextView = itemView.findViewById<TextView>(R.id.name)
-        fun bindView(language: Language){
-            textView.text=language.name
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val imageView: ImageView = itemView.findViewById(R.id.image)
+        private val textView: TextView = itemView.findViewById(R.id.name)
+        private val itemLayout: ConstraintLayout = itemView.findViewById(R.id.item_layout)
+        fun bindView(language: Language) {
+            textView.text = language.name
             imageView.setImageResource(getResourceId(activity, language.image))
+
+            itemLayout.setOnClickListener{
+                changeLanguage(language.short)
+            }
         }
     }
 
@@ -32,7 +40,7 @@ class LanguageSelectorAdapter(
     }
 
     override fun getItemCount(): Int {
-       return list.count()
+        return list.count()
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
