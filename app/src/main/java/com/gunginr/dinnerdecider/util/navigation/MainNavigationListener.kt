@@ -3,6 +3,7 @@ package com.gunginr.dinnerdecider.util.navigation
 import android.app.Activity
 import android.content.Intent
 import android.view.MenuItem
+import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
@@ -20,6 +21,7 @@ class MainNavigationListener(val activity: Activity, private val drawerLayout: D
                     closeNavigation()
                     return true
                 }
+                finishAffinity(activity)
                 activity.startActivity(Intent(activity, DecideActivity::class.java))
                 return true
             }

@@ -2,6 +2,7 @@ package com.gunginr.dinnerdecider.view.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
@@ -17,12 +18,12 @@ import com.gunginr.dinnerdecider.util.storagedata.readFromSharedPref
 import com.gunginr.dinnerdecider.util.storagedata.writeToSharedPref
 import com.gunginr.dinnerdecider.util.variables.LANGUAGE_BUNDLE_SUCCESS
 import kotlinx.android.synthetic.main.activity_decide.*
-
 import kotlin.random.Random
 
 class DecideActivity : BaseActivity() {
 
     private lateinit var listOfFood: ArrayList<String>
+    private var doubleClick = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,6 +102,24 @@ class DecideActivity : BaseActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        if (doubleClick) {
+            super.onBackPressed()
+        } else {
+            doubleClick = true
+            val snackbar = createInfoSnackBar(
+                this,
+                "Have you already chosen your dinner?",
+                "So, I go out"
+            ) {
+                super.onBackPressed()
+            }
+            snackbar.show()
+            Handler().postDelayed({ snackbar.dismiss(); doubleClick = false }, 1000)
+
+        }
+    }
+
     override fun onStop() {
         super.onStop()
         rootView.closeDrawer(GravityCompat.START)
@@ -110,5 +129,4 @@ class DecideActivity : BaseActivity() {
         super.onRestart()
         fillData()
     }
-
 }
