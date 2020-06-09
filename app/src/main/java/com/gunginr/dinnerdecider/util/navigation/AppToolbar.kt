@@ -7,7 +7,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.gunginr.dinnerdecider.R
-import com.gunginr.dinnerdecider.view.activity.MainActivity
+import com.gunginr.dinnerdecider.view.activity.DecideActivity
 
 class AppToolbar(activity: Activity, drawerLayout: DrawerLayout) {
     var logo: ImageView
@@ -21,7 +21,7 @@ class AppToolbar(activity: Activity, drawerLayout: DrawerLayout) {
             activity.startActivity(
                 Intent(
                     activity,
-                    MainActivity::class.java
+                    DecideActivity::class.java
                 )
             )
         }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Food Decider</string>
+    <string name="type_new_food">Wpisz nazwę nowgo jedzenia</string>
+    <string name="app_logo">Logo aplikacji</string>
+    <string name="decide">Zdecyduj!</string>
+    <string name="add_food">Dodaj jedzenie</string>
+    <string name="the_list_is_empty">Lista jest pusta</string>
+    <string name="list">Lista:</string>
+    <string name="empty_list">Nie dodałeś jeszcze żadnego jedzenia</string>
+    <string name="change_doesnt_save">Jeśli dokonałeś zmian musisz je zapisać!</string>
+    <string name="already_added">Ta potrawa/restauracja została już dodana</string>
+    <string name="empty_string">"Proszę napisz coś "</string>
+    <string name="toggle_menu">przełącz menu</string>
+    <string name="home_page">Ekran główny</string>
+    <string name="list_of_dishes">Lista potraw</string>
+    <string name="change_language">Zmień język</string>
+    <string name="select_language">Wybierz język</string>
+    <string name="english">Angielski</string>
+    <string name="polish">Polski</string>
+</resources>

@@ -7,7 +7,8 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.gunginr.dinnerdecider.R
-import com.gunginr.dinnerdecider.view.activity.MainActivity
+import com.gunginr.dinnerdecider.view.activity.ChangeLanguageActivity
+import com.gunginr.dinnerdecider.view.activity.DecideActivity
 import com.gunginr.dinnerdecider.view.activity.ShowSaveActivity
 
 class MainNavigationListener(val activity: Activity, val drawerLayout: DrawerLayout) :
@@ -15,32 +16,37 @@ class MainNavigationListener(val activity: Activity, val drawerLayout: DrawerLay
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_nav_home -> {
-                if (activity is MainActivity) {
-                    if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                        drawerLayout.closeDrawer(GravityCompat.START)
-                    }
+                if (activity is DecideActivity) {
+                    closeNavigation()
                     return true
                 }
-                val homeIntent=Intent(activity, MainActivity::class.java)
-                activity.startActivity(homeIntent)
+                activity.startActivity(Intent(activity, DecideActivity::class.java))
                 return true
             }
             R.id.item_nav_list -> {
                 if (activity is ShowSaveActivity) {
-                    if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                        drawerLayout.closeDrawer(GravityCompat.START)
-                    }
+                    closeNavigation()
                     return true
                 }
-                val listIntent=Intent(activity, ShowSaveActivity::class.java)
-                activity.startActivity(listIntent)
+                activity.startActivity(Intent(activity, ShowSaveActivity::class.java))
 
                 return true
             }
             R.id.item_nav_change_language -> {
+                if(activity is ChangeLanguageActivity){
+                    closeNavigation()
+                    return true
+                }
+                activity.startActivity(Intent(activity, ChangeLanguageActivity::class.java))
                 return true
             }
         }
-        return false;
+        return false
+    }
+
+    private fun closeNavigation(){
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        }
     }
 }

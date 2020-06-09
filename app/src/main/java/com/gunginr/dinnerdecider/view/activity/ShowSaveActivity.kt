@@ -7,9 +7,9 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gunginr.dinnerdecider.R
 import com.gunginr.dinnerdecider.view.adapter.FoodListAdapter
-import com.gunginr.dinnerdecider.util.createInfoSnackBar
-import com.gunginr.dinnerdecider.util.readFromSharedPref
-import com.gunginr.dinnerdecider.util.writeToSharedPref
+import com.gunginr.dinnerdecider.util.snackbars.createInfoSnackBar
+import com.gunginr.dinnerdecider.util.storagedata.readFromSharedPref
+import com.gunginr.dinnerdecider.util.storagedata.writeToSharedPref
 import kotlinx.android.synthetic.main.activity_show_save.*
 
 class ShowSaveActivity : AppCompatActivity() {
@@ -23,7 +23,8 @@ class ShowSaveActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_save)
 
-        list = readFromSharedPref(this)
+        list =
+            readFromSharedPref(this)
 
         if (list.size == 0) {
             showList(false)
@@ -79,7 +80,8 @@ class ShowSaveActivity : AppCompatActivity() {
         }
         createInfoSnackBar(
             this,
-            "Jeśli dokonałeś zmian musisz je zapisać!")
+            getString(R.string.change_doesnt_save)
+        )
         doubleBackPress = true
         Handler().postDelayed({ doubleBackPress = false }, 1500)
     }

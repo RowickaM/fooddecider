@@ -8,10 +8,14 @@ import androidx.core.view.GravityCompat
 import com.gunginr.dinnerdecider.R
 import com.gunginr.dinnerdecider.util.*
 import com.gunginr.dinnerdecider.util.navigation.AppToolbar
+import com.gunginr.dinnerdecider.util.snackbars.createErrorSnackBar
+import com.gunginr.dinnerdecider.util.snackbars.createInfoSnackBar
+import com.gunginr.dinnerdecider.util.storagedata.readFromSharedPref
+import com.gunginr.dinnerdecider.util.storagedata.writeToSharedPref
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
-class MainActivity : AppCompatActivity() {
+class DecideActivity : AppCompatActivity() {
 
     private lateinit var listOfFood: ArrayList<String>
 
@@ -42,7 +46,10 @@ class MainActivity : AppCompatActivity() {
             ) {
             }
         } else if (isExist(newFood, listOfFood)) {
-            createErrorSnackBar(this, getString(R.string.already_added))
+            createErrorSnackBar(
+                this,
+                getString(R.string.already_added)
+            )
         } else {
             addToList(newFood);
         }
@@ -53,7 +60,10 @@ class MainActivity : AppCompatActivity() {
         newFoodEditText.text.clear();
 
         listOfFood.add(stringFood)
-        writeToSharedPref(this, listOfFood)
+        writeToSharedPref(
+            this,
+            listOfFood
+        )
 
         decideButton.isEnabled = true
         decideButton.setBackgroundColor(resources.getColor(R.color.grey));
@@ -71,7 +81,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fillData() {
-        listOfFood = readFromSharedPref(this)
+        listOfFood =
+            readFromSharedPref(this)
 
         if (listOfFood.count() == 0) {
             decideButton.isEnabled = false

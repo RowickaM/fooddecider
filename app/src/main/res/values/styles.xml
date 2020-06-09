@@ -14,6 +14,6 @@
 
     <style name="buttonStyle" parent="@style/Widget.AppCompat.Button.Borderless">
         <item name="android:background">@color/grey</item>
-        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textColor">@color/greenDark</item>
     </style>
 </resources>

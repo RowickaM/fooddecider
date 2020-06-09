@@ -1,13 +1,20 @@
 <resources>
-    <string name="app_name">Food Decider</string>
+    <string name="app_name" translatable="false">Food Decider</string>
     <string name="type_new_food">Type new food</string>
     <string name="app_logo">app logo</string>
     <string name="decide">Decide!</string>
     <string name="add_food">Add food</string>
     <string name="the_list_is_empty">The list is empty</string>
     <string name="list">List:</string>
-    <string name="empty_list">You don\'t hav any food/restaurant. Please add something.</string>
+    <string name="empty_list">You don\'t have any food/restaurant. Please add something.</string>
+    <string name="change_doesnt_save">If you have made any changes you must save them!</string>
     <string name="already_added">This food has already been added.</string>
     <string name="empty_string">Please type something.</string>
     <string name="toggle_menu">toggle menu</string>
+    <string name="home_page">Home page</string>
+    <string name="list_of_dishes">List of dishes</string>
+    <string name="change_language">Change language</string>
+    <string name="select_language">Select language</string>
+    <string name="english">English</string>
+    <string name="polish">Polish</string>
 </resources>

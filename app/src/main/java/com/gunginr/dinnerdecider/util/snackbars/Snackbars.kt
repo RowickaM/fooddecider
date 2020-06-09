@@ -1,4 +1,4 @@
-package com.gunginr.dinnerdecider.util
+package com.gunginr.dinnerdecider.util.snackbars
 
 import android.app.Activity
 import com.google.android.material.snackbar.Snackbar
