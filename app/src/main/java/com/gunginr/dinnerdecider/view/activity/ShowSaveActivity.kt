@@ -16,7 +16,6 @@ class ShowSaveActivity : AppCompatActivity() {
 
     lateinit var adapter: FoodListAdapter
     lateinit var list: ArrayList<String>
-    private var wasChange = false
     private var doubleBackPress = false
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -24,8 +24,8 @@ class ChangeLanguageActivity : AppCompatActivity() {
                 }
             }
         }
-        list_of_language.adapter = adapter
-        list_of_language.layoutManager = LinearLayoutManager(this)
+        listOfLanguage.adapter = adapter
+        listOfLanguage.layoutManager = LinearLayoutManager(this)
     }
 
 }

@@ -11,7 +11,7 @@ import com.gunginr.dinnerdecider.view.activity.ChangeLanguageActivity
 import com.gunginr.dinnerdecider.view.activity.DecideActivity
 import com.gunginr.dinnerdecider.view.activity.ShowSaveActivity
 
-class MainNavigationListener(val activity: Activity, val drawerLayout: DrawerLayout) :
+class MainNavigationListener(val activity: Activity, private val drawerLayout: DrawerLayout) :
     NavigationView.OnNavigationItemSelectedListener {
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {

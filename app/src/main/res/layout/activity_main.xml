@@ -100,7 +100,6 @@
             android:id="@+id/decideButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:onClick="deciderBtn"
             android:padding="0dp"
             android:text="@string/decide"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"

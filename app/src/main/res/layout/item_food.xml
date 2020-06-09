@@ -18,7 +18,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Name of food" />
+        tools:text="Name of food"
+        tools:ignore="LabelFor" />
 
     <ImageView
         android:id="@+id/edit"
@@ -28,7 +29,8 @@
         android:src="@drawable/ic_save"
         app:layout_constraintBottom_toBottomOf="@+id/name"
         app:layout_constraintEnd_toStartOf="@+id/remove"
-        app:layout_constraintTop_toTopOf="@+id/name" />
+        app:layout_constraintTop_toTopOf="@+id/name"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/remove"

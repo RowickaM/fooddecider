@@ -2,7 +2,6 @@ package com.gunginr.dinnerdecider.util.variables
 
 const val SHARED_PREF_KEY_DINNER = "SHARED_DINNERS"
 const val SHARED_PREF_KEY_LANGUAGE = "SHARED_LANGUAGE"
-const val SHARED_PREF_DEFAULT_KEY = "SHARED_PREF_DEFAULT_KEY"
 const val LIST_DINNER_KEY = "LIST_DINNERS"
 const val CURRENT_LANG_KEY = "CURRENT_LANG_KEY"
 

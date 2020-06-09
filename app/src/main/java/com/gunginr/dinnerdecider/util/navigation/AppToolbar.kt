@@ -10,13 +10,11 @@ import com.gunginr.dinnerdecider.R
 import com.gunginr.dinnerdecider.view.activity.DecideActivity
 
 class AppToolbar(activity: Activity, drawerLayout: DrawerLayout) {
-    var logo: ImageView
-    var hamburger_btn: ImageView
-    private lateinit var navigationView: NavigationView
+    var logo: ImageView = activity.findViewById(R.id.logo)
+    private var hamburgerBtn: ImageView = activity.findViewById(R.id.hamburgerBtn)
+    private var navigationView: NavigationView
 
     init {
-        logo = activity.findViewById<ImageView>(R.id.logo)
-        hamburger_btn = activity.findViewById<ImageView>(R.id.hamburger_btn)
         logo.setOnClickListener {
             activity.startActivity(
                 Intent(
@@ -26,7 +24,7 @@ class AppToolbar(activity: Activity, drawerLayout: DrawerLayout) {
             )
         }
 
-        hamburger_btn.setOnClickListener {
+        hamburgerBtn.setOnClickListener {
             if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                 drawerLayout.closeDrawer(GravityCompat.START)
             } else {

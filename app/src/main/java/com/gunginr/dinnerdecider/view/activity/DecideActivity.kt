@@ -1,11 +1,11 @@
 package com.gunginr.dinnerdecider.view.activity
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import com.gunginr.dinnerdecider.R
 import com.gunginr.dinnerdecider.util.*
@@ -40,36 +40,39 @@ class DecideActivity : AppCompatActivity() {
         val toolbar = AppToolbar(this, rootView)
         toolbar.logo.visibility = View.GONE
 
-        newFoodButton.setOnClickListener(this::addNewFood)
+        newFoodButton.setOnClickListener { addNewFood() }
 
-        toList.setOnClickListener{
+        decideButton.setOnClickListener { deciderBtn() }
+        toList.setOnClickListener {
             startActivity(Intent(this, ShowSaveActivity::class.java))
         }
     }
 
-    private fun addNewFood(view: View) {
-        val newFood = newFoodEditText.text.toString();
+    private fun addNewFood() {
+        val newFood = newFoodEditText.text.toString()
 
-        if (newFood.trim() == "") {
-            createInfoSnackBar(
-                this,
-                getString(R.string.empty_string),
-                getString(android.R.string.ok)
-            ) {
+        when {
+            newFood.trim() == "" -> {
+                createInfoSnackBar(
+                    this,
+                    getString(R.string.empty_string)
+                )
             }
-        } else if (isExist(newFood, listOfFood)) {
-            createErrorSnackBar(
-                this,
-                getString(R.string.already_added)
-            )
-        } else {
-            addToList(newFood);
+            isExist(newFood, listOfFood) -> {
+                createErrorSnackBar(
+                    this,
+                    getString(R.string.already_added)
+                )
+            }
+            else -> {
+                addToList(newFood)
+            }
         }
     }
 
-    private fun addToList(stringFood: String){
+    private fun addToList(stringFood: String) {
         newFoodButton.isEnabled = false
-        newFoodEditText.text.clear();
+        newFoodEditText.text.clear()
 
         listOfFood.add(stringFood)
         writeToSharedPref(
@@ -78,16 +81,15 @@ class DecideActivity : AppCompatActivity() {
         )
 
         decideButton.isEnabled = true
-        decideButton.setBackgroundColor(resources.getColor(R.color.grey));
+        decideButton.setBackgroundColor(ContextCompat.getColor(this, R.color.grey))
 
         newFoodButton.isEnabled = true
     }
 
 
-
-    fun deciderBtn(view: View) {
+    fun deciderBtn() {
         decideButton.isEnabled = false
-        val index = Random.nextInt(listOfFood.count());
+        val index = Random.nextInt(listOfFood.count())
         result.text = listOfFood[index]
         decideButton.isEnabled = true
     }
@@ -98,7 +100,7 @@ class DecideActivity : AppCompatActivity() {
 
         if (listOfFood.count() == 0) {
             decideButton.isEnabled = false
-            decideButton.setBackgroundColor(resources.getColor(R.color.greyLight));
+            decideButton.setBackgroundColor(ContextCompat.getColor(this, R.color.greyLight))
         }
     }
 
@@ -106,6 +108,7 @@ class DecideActivity : AppCompatActivity() {
         super.onStop()
         rootView.closeDrawer(GravityCompat.START)
     }
+
     override fun onRestart() {
         super.onRestart()
         fillData()

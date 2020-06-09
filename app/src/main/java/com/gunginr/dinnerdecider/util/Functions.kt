@@ -11,6 +11,5 @@ fun isExist(name: String, list: ArrayList<String>): Boolean {
 fun String.toEditable(): Editable =  Editable.Factory.getInstance().newEditable(this)
 
 fun getResourceId(context: Context, nameOfRes: String): Int {
-    val id =  context.resources.getIdentifier(nameOfRes, "drawable", context.packageName )
-    return id;
+    return context.resources.getIdentifier(nameOfRes, "drawable", context.packageName )
 }
