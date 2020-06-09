@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gunginr.dinnerdecider.R
 import com.gunginr.dinnerdecider.base.BaseActivity
+import com.gunginr.dinnerdecider.util.navigation.AppToolbar
 import com.gunginr.dinnerdecider.util.storagedata.Language
 import com.gunginr.dinnerdecider.util.storagedata.LanguageShort
 import com.gunginr.dinnerdecider.util.storagedata.Languages
@@ -15,6 +16,7 @@ class ChangeLanguageActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_change_language)
+        AppToolbar(this, rootView)
 
         val adapter = LanguageSelectorAdapter(this, Languages(this).languages) { lang ->
             run {

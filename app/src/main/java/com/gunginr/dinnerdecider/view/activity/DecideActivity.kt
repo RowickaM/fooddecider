@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat
 import com.gunginr.dinnerdecider.R
 import com.gunginr.dinnerdecider.base.BaseActivity
 import com.gunginr.dinnerdecider.util.handlers.HandleBundle
+import com.gunginr.dinnerdecider.util.hideKeyboard
 import com.gunginr.dinnerdecider.util.isExist
 import com.gunginr.dinnerdecider.util.navigation.AppToolbar
 import com.gunginr.dinnerdecider.util.snackbars.createErrorSnackBar
@@ -15,7 +16,8 @@ import com.gunginr.dinnerdecider.util.snackbars.createInfoSnackBar
 import com.gunginr.dinnerdecider.util.storagedata.readFromSharedPref
 import com.gunginr.dinnerdecider.util.storagedata.writeToSharedPref
 import com.gunginr.dinnerdecider.util.variables.LANGUAGE_BUNDLE_SUCCESS
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_decide.*
+
 import kotlin.random.Random
 
 class DecideActivity : BaseActivity() {
@@ -24,7 +26,7 @@ class DecideActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_decide)
 
         fillData()
 
@@ -43,7 +45,7 @@ class DecideActivity : BaseActivity() {
 
     private fun addNewFood() {
         val newFood = newFoodEditText.text.toString()
-
+        rootView.hideKeyboard()
         when {
             newFood.trim() == "" -> {
                 createInfoSnackBar(

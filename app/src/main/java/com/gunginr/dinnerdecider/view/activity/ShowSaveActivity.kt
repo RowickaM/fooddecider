@@ -5,6 +5,8 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gunginr.dinnerdecider.R
 import com.gunginr.dinnerdecider.base.BaseActivity
+import com.gunginr.dinnerdecider.util.hideKeyboard
+import com.gunginr.dinnerdecider.util.navigation.AppToolbar
 import com.gunginr.dinnerdecider.util.snackbars.createErrorSnackBar
 import com.gunginr.dinnerdecider.util.storagedata.readFromSharedPref
 import com.gunginr.dinnerdecider.util.storagedata.writeToSharedPref
@@ -21,7 +23,9 @@ class ShowSaveActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_save)
 
+        AppToolbar(this, rootView)
         list = readFromSharedPref(this)
+
         for (i in 0 until list.count()) {
             listChanged.add(false)
         }
@@ -92,7 +96,7 @@ class ShowSaveActivity : BaseActivity() {
         onChangeTextInput(position, false)
         writeToSharedPref(this, list)
         bindList()
-
+        rootView.hideKeyboard()
     }
 
 

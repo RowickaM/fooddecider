@@ -2,8 +2,9 @@ package com.gunginr.dinnerdecider.util
 
 import android.content.Context
 import android.text.Editable
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import java.util.*
-import kotlin.collections.ArrayList
 
 fun isExist(name: String, list: ArrayList<String>): Boolean {
     return list.find { it.toUpperCase(Locale.getDefault()) == name.toUpperCase(Locale.getDefault()) } != null
@@ -12,4 +13,9 @@ fun String.toEditable(): Editable =  Editable.Factory.getInstance().newEditable(
 
 fun getResourceId(context: Context, nameOfRes: String): Int {
     return context.resources.getIdentifier(nameOfRes, "drawable", context.packageName )
+}
+
+fun View.hideKeyboard() {
+    val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    imm.hideSoftInputFromWindow(windowToken, 0)
 }
