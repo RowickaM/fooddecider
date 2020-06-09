@@ -8,6 +8,7 @@
     <string name="list">List:</string>
     <string name="empty_list">You don\'t have any food/restaurant. Please add something.</string>
     <string name="change_doesnt_save">If you have made any changes you must save them!</string>
+    <string name="back">Back</string>
     <string name="already_added">This food has already been added.</string>
     <string name="empty_string">Please type something.</string>
     <string name="toggle_menu">toggle menu</string>
@@ -15,7 +16,6 @@
     <string name="list_of_dishes">List of dishes</string>
     <string name="change_language">Change language</string>
     <string name="select_language">Select language</string>
-    <string name="language_has_been_changed">The language has been changed</string>
     <string name="english">English</string>
     <string name="polish">Polish</string>
 </resources>

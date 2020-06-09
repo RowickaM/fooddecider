@@ -25,7 +25,7 @@ fun readFromSharedPref(context: Context): ArrayList<String>{
         createInfoSnackBar(
             context as Activity,
             context.getString(R.string.empty_list)
-        )
+        ).show()
     }else{
         val type = object : TypeToken<List<String>>() {}.type
         return gson.fromJson(json, type)

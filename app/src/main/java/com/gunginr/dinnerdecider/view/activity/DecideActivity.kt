@@ -1,39 +1,30 @@
 package com.gunginr.dinnerdecider.view.activity
 
-import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import com.gunginr.dinnerdecider.R
-import com.gunginr.dinnerdecider.util.*
+import com.gunginr.dinnerdecider.base.BaseActivity
 import com.gunginr.dinnerdecider.util.handlers.HandleBundle
-import com.gunginr.dinnerdecider.util.language.Localization
+import com.gunginr.dinnerdecider.util.isExist
 import com.gunginr.dinnerdecider.util.navigation.AppToolbar
 import com.gunginr.dinnerdecider.util.snackbars.createErrorSnackBar
 import com.gunginr.dinnerdecider.util.snackbars.createInfoSnackBar
-import com.gunginr.dinnerdecider.util.storagedata.Language.getCurrentLanguage
 import com.gunginr.dinnerdecider.util.storagedata.readFromSharedPref
 import com.gunginr.dinnerdecider.util.storagedata.writeToSharedPref
 import com.gunginr.dinnerdecider.util.variables.LANGUAGE_BUNDLE_SUCCESS
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
-class DecideActivity : AppCompatActivity() {
+class DecideActivity : BaseActivity() {
 
     private lateinit var listOfFood: ArrayList<String>
-
-    override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(Localization.applyLanguage(newBase, getCurrentLanguage(newBase)))
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        HandleBundle.handleBundleInformation(this, LANGUAGE_BUNDLE_SUCCESS)
 
         fillData()
 
@@ -46,6 +37,8 @@ class DecideActivity : AppCompatActivity() {
         toList.setOnClickListener {
             startActivity(Intent(this, ShowSaveActivity::class.java))
         }
+
+        HandleBundle.handleBundleInformation(this, LANGUAGE_BUNDLE_SUCCESS)
     }
 
     private fun addNewFood() {
@@ -56,13 +49,13 @@ class DecideActivity : AppCompatActivity() {
                 createInfoSnackBar(
                     this,
                     getString(R.string.empty_string)
-                )
+                ).show()
             }
             isExist(newFood, listOfFood) -> {
                 createErrorSnackBar(
                     this,
                     getString(R.string.already_added)
-                )
+                ).show()
             }
             else -> {
                 addToList(newFood)
@@ -82,6 +75,7 @@ class DecideActivity : AppCompatActivity() {
 
         decideButton.isEnabled = true
         decideButton.setBackgroundColor(ContextCompat.getColor(this, R.color.grey))
+        decideButton.setTextColor(ContextCompat.getColor(this, R.color.greenDark))
 
         newFoodButton.isEnabled = true
     }
@@ -101,6 +95,7 @@ class DecideActivity : AppCompatActivity() {
         if (listOfFood.count() == 0) {
             decideButton.isEnabled = false
             decideButton.setBackgroundColor(ContextCompat.getColor(this, R.color.greyLight))
+            decideButton.setTextColor(ContextCompat.getColor(this, R.color.grey))
         }
     }
 

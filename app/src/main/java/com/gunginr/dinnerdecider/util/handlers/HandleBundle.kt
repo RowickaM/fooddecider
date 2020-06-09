@@ -9,7 +9,7 @@ object HandleBundle {
         if(bundle != null){
             val message = bundle.getStringExtra(key)
             if ( message != null && message != ""){
-                createSuccessSnackBar(activity, message)
+                createSuccessSnackBar(activity, message).show()
             }
         }
     }

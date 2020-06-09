@@ -6,7 +6,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.gunginr.dinnerdecider.R
 
 
-fun createErrorSnackBar(context: Activity, message: String) {
+fun createErrorSnackBar(context: Activity, message: String): Snackbar {
     val snackbar = Snackbar.make(
         context.findViewById(android.R.id.content),
         message,
@@ -15,10 +15,28 @@ fun createErrorSnackBar(context: Activity, message: String) {
 
     snackbar.setBackgroundTint(ContextCompat.getColor(context, R.color.red))
     snackbar.setTextColor(ContextCompat.getColor(context, R.color.white))
-    snackbar.show()
+    return snackbar
 }
 
-fun createSuccessSnackBar(context: Activity, message: String){
+fun createErrorSnackBar(
+    context: Activity,
+    message: String,
+    actionText: String,
+    action: () -> Unit
+): Snackbar {
+    val snackbar = Snackbar.make(
+        context.findViewById(android.R.id.content),
+        message,
+        Snackbar.LENGTH_SHORT
+    ).setAction(actionText) { action() }
+
+    snackbar.setBackgroundTint(ContextCompat.getColor(context, R.color.red))
+    snackbar.setTextColor(ContextCompat.getColor(context, R.color.white))
+    snackbar.setActionTextColor(ContextCompat.getColor(context, R.color.white))
+    return snackbar
+}
+
+fun createSuccessSnackBar(context: Activity, message: String): Snackbar {
     val snackbar = Snackbar.make(
         context.findViewById(android.R.id.content),
         message,
@@ -27,8 +45,7 @@ fun createSuccessSnackBar(context: Activity, message: String){
 
     snackbar.setBackgroundTint(ContextCompat.getColor(context, R.color.green))
     snackbar.setTextColor(ContextCompat.getColor(context, R.color.white))
-    snackbar.show()
-
+    return snackbar
 }
 
 fun createInfoSnackBar(
@@ -36,7 +53,7 @@ fun createInfoSnackBar(
     message: String,
     actionText: String,
     action: () -> Unit
-){
+): Snackbar {
     val snackbar = Snackbar.make(
         context.findViewById(android.R.id.content),
         message,
@@ -46,11 +63,11 @@ fun createInfoSnackBar(
     snackbar.setBackgroundTint(ContextCompat.getColor(context, R.color.grey))
     snackbar.setTextColor(ContextCompat.getColor(context, R.color.white))
     snackbar.setActionTextColor(ContextCompat.getColor(context, R.color.white))
-    snackbar.show()
+    return snackbar
 }
 
 
-fun createInfoSnackBar(context: Activity, message: String) {
+fun createInfoSnackBar(context: Activity, message: String): Snackbar {
     val snackbar = Snackbar.make(
         context.findViewById(android.R.id.content),
         message,
@@ -59,5 +76,5 @@ fun createInfoSnackBar(context: Activity, message: String) {
 
     snackbar.setBackgroundTint(ContextCompat.getColor(context, R.color.grey))
     snackbar.setTextColor(ContextCompat.getColor(context, R.color.white))
-    snackbar.show()
+    return snackbar
 }

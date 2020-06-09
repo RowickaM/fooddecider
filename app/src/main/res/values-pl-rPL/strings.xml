@@ -9,6 +9,7 @@
     <string name="list">Lista:</string>
     <string name="empty_list">Nie dodałeś jeszcze żadnego jedzenia</string>
     <string name="change_doesnt_save">Jeśli dokonałeś zmian musisz je zapisać!</string>
+    <string name="back">Powrót</string>
     <string name="already_added">Ta potrawa/restauracja została już dodana</string>
     <string name="empty_string">"Proszę napisz coś "</string>
     <string name="toggle_menu">przełącz menu</string>
@@ -16,7 +17,6 @@
     <string name="list_of_dishes">Lista potraw</string>
     <string name="change_language">Zmień język</string>
     <string name="select_language">Wybierz język</string>
-    <string name="language_has_been_changed">Język został zmieniony</string>
     <string name="english">Angielski</string>
     <string name="polish">Polski</string>
 </resources>

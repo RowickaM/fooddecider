@@ -16,14 +16,16 @@ class FoodListAdapter(
     private val context: Context,
     private val foods: List<String>,
     private val removeClick: (position: Int) -> Unit,
-    private val editClick: (position: Int, name: String) -> Unit
+    private val editClick: (position: Int, name: String) -> Unit,
+    private val onChange: (position: Int, isChange: Boolean) -> Unit
 ) :
     RecyclerView.Adapter<FoodListAdapter.ViewHolder>() {
 
     inner class ViewHolder(
         itemView: View,
         val remove: (position: Int) -> Unit,
-        val edit: (position: Int, name: String) -> Unit
+        val edit: (position: Int, name: String) -> Unit,
+        val change: (position: Int, isChange: Boolean) -> Unit
     ) : RecyclerView.ViewHolder(itemView) {
         private val name = itemView.findViewById<EditText>(R.id.name)
         private val removeBtn = itemView.findViewById<ImageView>(R.id.remove)
@@ -39,7 +41,7 @@ class FoodListAdapter(
                 removeBtn.isEnabled = true
             }
 
-            name.addTextChangedListener(object : TextWatcher{
+            name.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable?) {}
 
                 override fun beforeTextChanged(
@@ -47,10 +49,12 @@ class FoodListAdapter(
                     start: Int,
                     count: Int,
                     after: Int
-                ) {}
+                ) {
+                }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    editBtn.isEnabled  = s.toString() != nameOfFood
+                    editBtn.isEnabled = s.toString() != nameOfFood
+                    change(position, s.toString() != nameOfFood)
                 }
 
             })
@@ -65,7 +69,7 @@ class FoodListAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context)
             .inflate(R.layout.item_food, parent, false)
-        return ViewHolder(view, removeClick, editClick)
+        return ViewHolder(view, removeClick, editClick, onChange)
     }
 
     override fun getItemCount(): Int {

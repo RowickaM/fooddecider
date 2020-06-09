@@ -4,10 +4,8 @@ import android.app.Activity
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
-import android.content.SharedPreferences
 import com.gunginr.dinnerdecider.R
 import com.gunginr.dinnerdecider.util.language.Language
-import com.gunginr.dinnerdecider.util.snackbars.createSuccessSnackBar
 import com.gunginr.dinnerdecider.util.variables.CURRENT_LANG_KEY
 import com.gunginr.dinnerdecider.util.variables.LANGUAGE_BUNDLE_SUCCESS
 import com.gunginr.dinnerdecider.util.variables.SHARED_PREF_KEY_LANGUAGE
@@ -34,7 +32,11 @@ object Language{
             .commit()
         activity.finish()
         val homeIntent = Intent(activity, DecideActivity::class.java)
-        homeIntent.putExtra(LANGUAGE_BUNDLE_SUCCESS, activity.getString(R.string.language_has_been_changed))
+        when (lang) {
+            "pl" -> homeIntent.putExtra(LANGUAGE_BUNDLE_SUCCESS, "Język został zmieniony")
+            "en" -> homeIntent.putExtra(LANGUAGE_BUNDLE_SUCCESS, "The language has been changed")
+        }
+
         activity.startActivity(homeIntent)
         activity.finishAffinity()
     }
