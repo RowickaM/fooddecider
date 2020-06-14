@@ -6,12 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.gunginr.dinnerdecider.R
+import com.gunginr.dinnerdecider.services.firebase.FirebaseFirestore
 import com.gunginr.dinnerdecider.util.snackbars.createInfoSnackBar
 import com.gunginr.dinnerdecider.util.variables.LIST_DINNER_KEY
 import com.gunginr.dinnerdecider.util.variables.SHARED_PREF_KEY_DINNER
 
 val gson = Gson()
 fun writeToSharedPref(context: Context, list: ArrayList<String>){
+    FirebaseFirestore.saveList(list)
+
     val editor = context.getSharedPreferences(SHARED_PREF_KEY_DINNER, AppCompatActivity.MODE_PRIVATE).edit()
     val json = gson.toJson(list)
 

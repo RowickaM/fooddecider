@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Food Decider</string>
-    <string name="type_new_food">Wpisz nazwę nowgo jedzenia</string>
+    <string name="type_new_food">Nazwa nowej potrawy</string>
     <string name="app_logo">Logo aplikacji</string>
     <string name="decide">Zdecyduj!</string>
     <string name="add_food">Dodaj jedzenie</string>
@@ -19,4 +19,14 @@
     <string name="select_language">Wybierz język</string>
     <string name="english">Angielski</string>
     <string name="polish">Polski</string>
+    <string name="do_you_have_dinner">Wybrałeś już swoje danie?</string>
+    <string name="i_go_out">Tak! Dziękuje :)</string>
+    <string name="email">Email</string>
+    <string name="password">Hasło</string>
+    <string name="sign_in">Zaloguj się</string>
+    <string name="free_account">Konto jest całkowicie darmowe!</string>
+    <string name="hello_header">Witaj w FoodDecider! Aby w pełni korzystać z funkcji aplikacji musisz posiadać konto.</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="sign_up">sing_up</string>
+    <string name="logout">Logout</string>
 </resources>

@@ -5,10 +5,10 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gunginr.dinnerdecider.R
 import com.gunginr.dinnerdecider.base.BaseActivity
+import com.gunginr.dinnerdecider.services.firebase.FirebaseFirestore
 import com.gunginr.dinnerdecider.util.hideKeyboard
 import com.gunginr.dinnerdecider.util.navigation.AppToolbar
 import com.gunginr.dinnerdecider.util.snackbars.createErrorSnackBar
-import com.gunginr.dinnerdecider.util.storagedata.readFromSharedPref
 import com.gunginr.dinnerdecider.util.storagedata.writeToSharedPref
 import com.gunginr.dinnerdecider.view.adapter.FoodListAdapter
 import kotlinx.android.synthetic.main.activity_show_save.*
@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_show_save.*
 class ShowSaveActivity : BaseActivity() {
 
     lateinit var adapter: FoodListAdapter
-    lateinit var list: ArrayList<String>
+    private var list: ArrayList<String> = arrayListOf()
     var listChanged: ArrayList<Boolean> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,19 +24,23 @@ class ShowSaveActivity : BaseActivity() {
         setContentView(R.layout.activity_show_save)
 
         AppToolbar(this, rootView)
-        list = readFromSharedPref(this)
 
-        for (i in 0 until list.count()) {
-            listChanged.add(false)
+        FirebaseFirestore.dishesCollectionListener(this) {
+            list = it
+            for (i in 0 until list.count()) {
+                listChanged.add(false)
+            }
+
+            if (list.size == 0) {
+                showList(false)
+            } else {
+                showList(true)
+                bindList()
+                foodList.adapter = adapter
+            }
         }
 
-        if (list.size == 0) {
-            showList(false)
-        } else {
-            showList(true)
-            bindList()
-            foodList.adapter = adapter
-        }
+
 
         foodList.layoutManager = LinearLayoutManager(this)
         foodList.setHasFixedSize(true)

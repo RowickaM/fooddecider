@@ -8,15 +8,17 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import com.gunginr.dinnerdecider.R
 import com.gunginr.dinnerdecider.base.BaseActivity
+import com.gunginr.dinnerdecider.services.firebase.FirebaseFirestore.dishesCollectionListener
+import com.gunginr.dinnerdecider.util.goToAndCloseOther
 import com.gunginr.dinnerdecider.util.handlers.HandleBundle
 import com.gunginr.dinnerdecider.util.hideKeyboard
 import com.gunginr.dinnerdecider.util.isExist
 import com.gunginr.dinnerdecider.util.navigation.AppToolbar
 import com.gunginr.dinnerdecider.util.snackbars.createErrorSnackBar
 import com.gunginr.dinnerdecider.util.snackbars.createInfoSnackBar
-import com.gunginr.dinnerdecider.util.storagedata.readFromSharedPref
 import com.gunginr.dinnerdecider.util.storagedata.writeToSharedPref
 import com.gunginr.dinnerdecider.util.variables.LANGUAGE_BUNDLE_SUCCESS
+import com.gunginr.projectmanagement.services.firebase.FirebaseAuthorisation
 import kotlinx.android.synthetic.main.activity_decide.*
 import kotlin.random.Random
 
@@ -28,6 +30,10 @@ class DecideActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_decide)
+
+        if (!FirebaseAuthorisation.isAuth()) {
+            this.goToAndCloseOther(LoginActivity::class.java)
+        }
 
         fillData()
 
@@ -68,7 +74,7 @@ class DecideActivity : BaseActivity() {
 
     private fun addToList(stringFood: String) {
         newFoodButton.isEnabled = false
-        newFoodEditText.text.clear()
+        newFoodEditText.text?.clear()
 
         listOfFood.add(stringFood)
         writeToSharedPref(
@@ -92,13 +98,15 @@ class DecideActivity : BaseActivity() {
     }
 
     private fun fillData() {
-        listOfFood =
-            readFromSharedPref(this)
+        dishesCollectionListener(this) {
+            listOfFood = it
+            writeToSharedPref(this, listOfFood)
 
-        if (listOfFood.count() == 0) {
-            decideButton.isEnabled = false
-            decideButton.setBackgroundColor(ContextCompat.getColor(this, R.color.greyLight))
-            decideButton.setTextColor(ContextCompat.getColor(this, R.color.grey))
+            if (listOfFood.count() == 0) {
+                decideButton.isEnabled = false
+                decideButton.setBackgroundColor(ContextCompat.getColor(this, R.color.greyLight))
+                decideButton.setTextColor(ContextCompat.getColor(this, R.color.grey))
+            }
         }
     }
 
@@ -109,8 +117,8 @@ class DecideActivity : BaseActivity() {
             doubleClick = true
             val snackbar = createInfoSnackBar(
                 this,
-                "Have you already chosen your dinner?",
-                "So, I go out"
+                getString(R.string.do_you_have_dinner),
+                getString(R.string.i_go_out)
             ) {
                 super.onBackPressed()
             }

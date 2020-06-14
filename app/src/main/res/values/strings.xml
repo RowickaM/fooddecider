@@ -18,4 +18,14 @@
     <string name="select_language">Select language</string>
     <string name="english">English</string>
     <string name="polish">Polish</string>
+    <string name="do_you_have_dinner">Have you already chosen your dinner?</string>
+    <string name="i_go_out">Yes! Thank you :)</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="free_account">Konto jest całkowicie darmowe!</string>
+    <string name="hello_header">Witaj w FoodDecider! Aby w pełni korzystać z funkcji aplikacji musisz posiadać konto.</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="sign_up">sing_up</string>
+    <string name="logout">Logout</string>
 </resources>

@@ -9,15 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.ChangeLanguageActivity"></activity>
-        <activity android:name=".view.activity.ShowSaveActivity" />
-        <activity android:name=".view.activity.DecideActivity">
+        <activity android:name=".view.activity.RegistrationActivity"></activity>
+        <activity android:name=".view.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.activity.ChangeLanguageActivity" />
+        <activity android:name=".view.activity.ShowSaveActivity" />
+        <activity android:name=".view.activity.DecideActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
