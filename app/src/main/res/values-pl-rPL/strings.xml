@@ -26,8 +26,8 @@
     <string name="sign_in">Zaloguj się</string>
     <string name="free_account">Konto jest całkowicie darmowe!</string>
     <string name="hello_header">Witaj w FoodDecider! Aby w pełni korzystać z funkcji aplikacji musisz posiadać konto.</string>
-    <string name="repeat_password">Repeat password</string>
-    <string name="sign_up">sing_up</string>
-    <string name="logout">Logout</string>
-    <string name="templates">Templates</string>
+    <string name="repeat_password">Powtórz hasło</string>
+    <string name="sign_up">Zarejestruj się</string>
+    <string name="logout">Wyloguj się</string>
+    <string name="templates">Szablony</string>
 </resources>

@@ -23,10 +23,10 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="sign_in">Sign in</string>
-    <string name="free_account">Konto jest całkowicie darmowe!</string>
-    <string name="hello_header">Witaj w FoodDecider! Aby w pełni korzystać z funkcji aplikacji musisz posiadać konto.</string>
+    <string name="free_account">The account is completely free!</string>
+    <string name="hello_header">Welcome to FoodDecider! To fully use the application\'s functions you must have an account.</string>
     <string name="repeat_password">Repeat password</string>
-    <string name="sign_up">sing_up</string>
+    <string name="sign_up">Sing up</string>
     <string name="logout">Logout</string>
     <string name="templates">Templates</string>
 </resources>

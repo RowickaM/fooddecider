@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.gunginr.dinnerdecider.R
 import com.gunginr.dinnerdecider.base.BaseActivity
 import com.gunginr.dinnerdecider.model.FoodCategory
+import com.gunginr.dinnerdecider.util.navigation.AppToolbar
 import com.gunginr.dinnerdecider.view.adapter.FoodCategoryAdapter
 import kotlinx.android.synthetic.main.activity_templates.*
 
@@ -14,6 +15,7 @@ class TemplatesActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_templates)
+        AppToolbar(this, rootView)
 
         listOfTemplates.layoutManager = LinearLayoutManager(this)
 

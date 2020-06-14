@@ -48,6 +48,10 @@ class MainNavigationListener(val activity: Activity, private val drawerLayout: D
                 return true
             }
             R.id.item_nav_templates -> {
+                if (activity is TemplatesActivity) {
+                    closeNavigation()
+                    return true
+                }
                 activity.goTo(TemplatesActivity::class.java)
                 return true
             }

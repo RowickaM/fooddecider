@@ -3,7 +3,6 @@ package com.gunginr.dinnerdecider.base
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import com.gunginr.dinnerdecider.services.firebase.FirebaseFirestore
-
 import com.gunginr.dinnerdecider.util.language.Localization
 import com.gunginr.dinnerdecider.util.storagedata.Language
 
