@@ -3,9 +3,12 @@ package com.gunginr.dinnerdecider.util
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.text.Editable
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import com.google.android.gms.common.util.Base64Utils
 import java.util.*
 
 fun isExist(name: String, list: ArrayList<String>): Boolean {
@@ -15,6 +18,11 @@ fun String.toEditable(): Editable =  Editable.Factory.getInstance().newEditable(
 
 fun getResourceId(context: Context, nameOfRes: String): Int {
     return context.resources.getIdentifier(nameOfRes, "drawable", context.packageName )
+}
+
+fun imageFromBase64(base64: String): Bitmap {
+    val imageBytes = Base64Utils.decode(base64)
+    return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.count())
 }
 
 fun View.hideKeyboard() {

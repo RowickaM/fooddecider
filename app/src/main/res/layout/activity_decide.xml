@@ -108,7 +108,7 @@
             app:layout_constraintTop_toTopOf="@id/guideline_h25"
             app:layout_constraintWidth_percent=".3" />
 
-        <Button
+        <TextView
             android:id="@+id/decideButton"
             style="@style/buttonStyle"
             android:layout_width="0dp"

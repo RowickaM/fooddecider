@@ -1,9 +1,8 @@
-package com.gunginr.projectmanagement.services.firebase
+package com.gunginr.dinnerdecider.services.firebase
 
 import android.app.Activity
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
-import com.gunginr.dinnerdecider.services.firebase.FirebaseFirestore
 import com.gunginr.dinnerdecider.util.goToAndCloseOther
 import com.gunginr.dinnerdecider.util.storagedata.readFromSharedPref
 import com.gunginr.dinnerdecider.view.activity.DecideActivity

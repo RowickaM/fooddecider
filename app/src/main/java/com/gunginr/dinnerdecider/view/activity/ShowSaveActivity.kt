@@ -40,8 +40,6 @@ class ShowSaveActivity : BaseActivity() {
             }
         }
 
-
-
         foodList.layoutManager = LinearLayoutManager(this)
         foodList.setHasFixedSize(true)
     }

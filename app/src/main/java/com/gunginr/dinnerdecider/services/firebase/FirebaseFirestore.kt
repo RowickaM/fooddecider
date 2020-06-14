@@ -6,10 +6,9 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.gunginr.dinnerdecider.model.FoodCategory
 import com.gunginr.dinnerdecider.util.storagedata.readFromSharedPref
-import com.gunginr.dinnerdecider.util.variables.DISHES_COLLECTION
-import com.gunginr.dinnerdecider.util.variables.DISHES_KEY
-import com.gunginr.projectmanagement.services.firebase.FirebaseAuthorisation
+import com.gunginr.dinnerdecider.util.variables.*
 
 
 object FirebaseFirestore {
@@ -19,8 +18,10 @@ object FirebaseFirestore {
     private val dishesCollection = db.collection(DISHES_COLLECTION)
 
     private var dishesCollectionListener: ListenerRegistration? = null
+    private var templatesCollectionListener: ListenerRegistration? = null
 
     fun removeListeners() {
+        templatesCollectionListener?.remove()
         dishesCollectionListener?.remove()
         Log.d(TAG, "all listeners has been removed")
     }
@@ -38,6 +39,31 @@ object FirebaseFirestore {
                     doSomething(getListDishes(snapshot!!))
 
                 }
+    }
+
+    fun getTemplates(doSomething: (ArrayList<FoodCategory>) -> Unit) {
+        templatesCollectionListener = db.collection(TEMPLATES_COLLECTION)
+            .addSnapshotListener { snapshot, exception ->
+                if (exception != null)
+                    return@addSnapshotListener
+
+                val list = arrayListOf<FoodCategory>()
+                for (doc in snapshot!!.documents) {
+                    val category = doc[CATEGORY_KEY] as Map<String, Any>
+                    val tags = category[TAGS_KEY] as ArrayList<String>
+                    val dishes = doc[DISHES_KEY] as ArrayList<String>
+
+                    list.add(
+                        FoodCategory(
+                            category[NAME_KEY].toString(),
+                            category[IMAGE_KEY].toString(),
+                            tags,
+                            dishes
+                        )
+                    )
+                }
+                doSomething(list)
+            }
     }
 
     private fun getListDishes(snapshot: DocumentSnapshot): ArrayList<String> {

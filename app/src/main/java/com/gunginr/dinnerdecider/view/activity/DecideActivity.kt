@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import com.gunginr.dinnerdecider.R
 import com.gunginr.dinnerdecider.base.BaseActivity
+import com.gunginr.dinnerdecider.services.firebase.FirebaseAuthorisation
 import com.gunginr.dinnerdecider.services.firebase.FirebaseFirestore.dishesCollectionListener
 import com.gunginr.dinnerdecider.util.goToAndCloseOther
 import com.gunginr.dinnerdecider.util.handlers.HandleBundle
@@ -18,7 +19,6 @@ import com.gunginr.dinnerdecider.util.snackbars.createErrorSnackBar
 import com.gunginr.dinnerdecider.util.snackbars.createInfoSnackBar
 import com.gunginr.dinnerdecider.util.storagedata.writeToSharedPref
 import com.gunginr.dinnerdecider.util.variables.LANGUAGE_BUNDLE_SUCCESS
-import com.gunginr.projectmanagement.services.firebase.FirebaseAuthorisation
 import kotlinx.android.synthetic.main.activity_decide.*
 import kotlin.random.Random
 

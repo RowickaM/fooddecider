@@ -3,8 +3,8 @@ package com.gunginr.dinnerdecider.view.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.gunginr.dinnerdecider.R
+import com.gunginr.dinnerdecider.services.firebase.FirebaseAuthorisation
 import com.gunginr.dinnerdecider.util.goTo
-import com.gunginr.projectmanagement.services.firebase.FirebaseAuthorisation
 import kotlinx.android.synthetic.main.activity_registration.*
 
 class RegistrationActivity : AppCompatActivity() {

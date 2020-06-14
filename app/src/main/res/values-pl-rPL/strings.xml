@@ -29,4 +29,5 @@
     <string name="repeat_password">Repeat password</string>
     <string name="sign_up">sing_up</string>
     <string name="logout">Logout</string>
+    <string name="templates">Templates</string>
 </resources>
