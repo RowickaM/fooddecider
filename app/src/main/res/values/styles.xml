@@ -4,7 +4,7 @@
         <item name="colorPrimary">@color/grey</item>
         <item name="colorPrimaryDark">@color/grey</item>
         <item name="colorAccent">@color/grey</item>
-        <item name="android:windowBackground">@color/greyMedium</item>
+        <item name="android:windowBackground">@color/bgColor</item>
         <item name="android:textColor">@color/grey</item>
         <item name="fontFamily">@font/arvo</item>
     </style>

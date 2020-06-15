@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import com.gunginr.dinnerdecider.R
 import com.gunginr.dinnerdecider.base.BaseActivity
@@ -15,6 +14,7 @@ import com.gunginr.dinnerdecider.util.handlers.HandleBundle
 import com.gunginr.dinnerdecider.util.hideKeyboard
 import com.gunginr.dinnerdecider.util.isExist
 import com.gunginr.dinnerdecider.util.navigation.AppToolbar
+import com.gunginr.dinnerdecider.util.setBtnEnabled
 import com.gunginr.dinnerdecider.util.snackbars.createErrorSnackBar
 import com.gunginr.dinnerdecider.util.snackbars.createInfoSnackBar
 import com.gunginr.dinnerdecider.util.storagedata.writeToSharedPref
@@ -74,7 +74,7 @@ class DecideActivity : BaseActivity() {
     }
 
     private fun addToList(stringFood: String) {
-        newFoodButton.isEnabled = false
+        newFoodButton.setBtnEnabled(this, false)
         newFoodEditText.text?.clear()
 
         listOfFood.add(stringFood)
@@ -83,19 +83,17 @@ class DecideActivity : BaseActivity() {
             listOfFood
         )
 
-        decideButton.isEnabled = true
-        decideButton.setBackgroundColor(ContextCompat.getColor(this, R.color.grey))
-        decideButton.setTextColor(ContextCompat.getColor(this, R.color.greenDark))
+        decideButton.setBtnEnabled(this, true)
 
-        newFoodButton.isEnabled = true
+        newFoodButton.setBtnEnabled(this, true)
     }
 
 
     fun deciderBtn() {
-        decideButton.isEnabled = false
+        decideButton.setBtnEnabled(this, false)
         val index = Random.nextInt(listOfFood.count())
         result.text = listOfFood[index]
-        decideButton.isEnabled = true
+        decideButton.setBtnEnabled(this, true)
     }
 
     private fun fillData() {
@@ -104,9 +102,7 @@ class DecideActivity : BaseActivity() {
             writeToSharedPref(this, listOfFood)
 
             if (listOfFood.count() == 0) {
-                decideButton.isEnabled = false
-                decideButton.setBackgroundColor(ContextCompat.getColor(this, R.color.greyLight))
-                decideButton.setTextColor(ContextCompat.getColor(this, R.color.grey))
+                decideButton.setBtnEnabled(this, false)
             }
         }
     }

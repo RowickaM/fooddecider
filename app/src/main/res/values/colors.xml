@@ -5,6 +5,7 @@
     <color name="greenDark">#5a7e8c</color>
     <color name="grey">#333333</color>
     <color name="greyMedium">#A0A3A2</color>
+    <color name="bgColor">#DCDDDD</color>
     <color name="greyLight">#808080</color>
     <color name="red">#B83A3A</color>
     <color name="green">#4CB83A</color>

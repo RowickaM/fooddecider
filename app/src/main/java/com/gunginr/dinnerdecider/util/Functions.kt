@@ -8,7 +8,10 @@ import android.graphics.BitmapFactory
 import android.text.Editable
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 import com.google.android.gms.common.util.Base64Utils
+import com.gunginr.dinnerdecider.R
 import java.util.*
 
 fun isExist(name: String, list: ArrayList<String>): Boolean {
@@ -37,4 +40,16 @@ fun Activity.goTo(destination: Class<*>) {
 fun Activity.goToAndCloseOther(destination: Class<*>) {
     this.finishAffinity()
     this.startActivity(Intent(this, destination))
+}
+
+fun TextView.setBtnEnabled(activity: Activity, enable: Boolean) {
+    if (enable) {
+        this.isEnabled = true
+        this.setBackgroundColor(ContextCompat.getColor(activity, R.color.grey))
+        this.setTextColor(ContextCompat.getColor(activity, R.color.greenDark))
+    } else {
+        this.isEnabled = false
+        this.setBackgroundColor(ContextCompat.getColor(activity, R.color.greyLight))
+        this.setTextColor(ContextCompat.getColor(activity, R.color.grey))
+    }
 }

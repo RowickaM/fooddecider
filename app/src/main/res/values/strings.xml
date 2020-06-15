@@ -33,4 +33,5 @@
     <string name="add_to_your_list">Add to your list</string>
     <string name="dont_have_account">You do not have an account? Sing up</string>
     <string name="have_account">Do you have an account? Sign in</string>
+    <string name="you_add_everything_from_this_list">You add everything from this list</string>
 </resources>

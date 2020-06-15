@@ -1,6 +1,7 @@
 package com.gunginr.dinnerdecider.view.activity.templates
 
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -11,12 +12,15 @@ import com.gunginr.dinnerdecider.R
 import com.gunginr.dinnerdecider.model.DishesTemplate
 import com.gunginr.dinnerdecider.model.FoodCategory
 import com.gunginr.dinnerdecider.util.imageFromBase64
+import com.gunginr.dinnerdecider.util.navigation.AppToolbar
+import com.gunginr.dinnerdecider.util.setBtnEnabled
 import com.gunginr.dinnerdecider.util.storagedata.readFromSharedPref
 import com.gunginr.dinnerdecider.util.storagedata.writeToSharedPref
 import com.gunginr.dinnerdecider.util.variables.DISHES_KEY
 import com.gunginr.dinnerdecider.view.adapter.FoodAlreadyAddedAdapter
 import com.gunginr.dinnerdecider.view.adapter.FoodTemplateAdapter
 import com.gunginr.dinnerdecider.view.adapter.TagCategoryAdapter
+import com.gunginr.dinnerdecider.view.fragment.NothingToShowFragment
 import kotlinx.android.synthetic.main.activity_template_list.*
 
 class TemplateListActivity : AppCompatActivity() {
@@ -29,6 +33,7 @@ class TemplateListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_template_list)
+        AppToolbar(this, rootView)
 
         toAddList.layoutManager = LinearLayoutManager(this)
         alreadyAddedList.layoutManager = GridLayoutManager(this, 3)
@@ -40,16 +45,22 @@ class TemplateListActivity : AppCompatActivity() {
             setLists(template.dishes)
             setHeader(template)
 
-            adapterToAddList = FoodTemplateAdapter(
-                this,
-                listToAdd,
-                { id -> listToAdd[id].add = true },
-                { id -> listToAdd[id].add = false }
-            )
-
+            if (listToAdd.count() == 0) {
+                nothingToAdd()
+            } else {
+                nothingToAdd.visibility = View.GONE
+                toAddList.visibility = View.VISIBLE
+                adapterToAddList = FoodTemplateAdapter(
+                    this,
+                    listToAdd,
+                    { id -> listToAdd[id].add = true },
+                    { id -> listToAdd[id].add = false }
+                )
+                toAddList.adapter = adapterToAddList
+            }
             adapterAlreadyAddedList = FoodAlreadyAddedAdapter(this, listAlreadyAdded)
 
-            toAddList.adapter = adapterToAddList
+
             alreadyAddedList.adapter = adapterAlreadyAddedList
 
 
@@ -59,14 +70,23 @@ class TemplateListActivity : AppCompatActivity() {
         }
     }
 
+    private fun nothingToAdd() {
+        buttonAdd.setBtnEnabled(this, false)
+        nothingToAdd.visibility = View.VISIBLE
+        toAddList.visibility = View.GONE
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.nothingToAdd, NothingToShowFragment())
+            .commit()
+    }
+
     private fun addToList() {
-        buttonAdd.isEnabled = false
+        buttonAdd.setBtnEnabled(this, false)
         val existList = readFromSharedPref(this)
         existList.addAll(getItemToAdd(listToAdd))
 
         writeToSharedPref(this, existList)
 
-        buttonAdd.isEnabled = true
+        buttonAdd.setBtnEnabled(this, false)
         finish()
     }
 
