@@ -4,6 +4,7 @@
     <color name="greenLight">#ccd7dc</color>
     <color name="greenDark">#5a7e8c</color>
     <color name="grey">#333333</color>
+    <color name="blur">#99000000</color>
     <color name="greyMedium">#A0A3A2</color>
     <color name="bgColor">#DCDDDD</color>
     <color name="greyLight">#808080</color>
