@@ -11,7 +11,7 @@
 
     <style name="buttonStyle" parent="@style/Widget.MaterialComponents.Button">
         <item name="android:background">@color/grey</item>
-        <item name="android:textColor">@color/greenDark</item>
+        <item name="android:textColor">@color/bgColor</item>
         <item name="android:insetBottom">0dp</item>
         <item name="android:insetTop">0dp</item>
     </style>

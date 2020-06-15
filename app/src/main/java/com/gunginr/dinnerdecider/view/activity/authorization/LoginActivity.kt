@@ -7,12 +7,14 @@ import com.gunginr.dinnerdecider.R
 import com.gunginr.dinnerdecider.services.firebase.FirebaseAuthorisation
 import com.gunginr.dinnerdecider.util.goTo
 import com.gunginr.dinnerdecider.util.goToAndCloseOther
+import com.gunginr.dinnerdecider.util.isEmailValid
+import com.gunginr.dinnerdecider.util.isPasswordValid
 import com.gunginr.dinnerdecider.view.activity.DecideActivity
 import com.gunginr.dinnerdecider.view.fragment.LoadingFragment
 import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity : AppCompatActivity() {
 
+class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -23,12 +25,14 @@ class LoginActivity : AppCompatActivity() {
         }
 
         login.setOnClickListener {
-            showPopup(true)
-            FirebaseAuthorisation.singIn(
-                this,
-                emailInput.text.toString(),
-                passwordInput.text.toString()
-            )
+            if (validation()) {
+                showPopup(true)
+                FirebaseAuthorisation.singIn(
+                    this,
+                    emailInput.text.toString(),
+                    passwordInput.text.toString()
+                )
+            }
         }
         toRegistration.setOnClickListener {
             this.goTo(RegistrationActivity::class.java)
@@ -53,5 +57,21 @@ class LoginActivity : AppCompatActivity() {
             finishAffinity()
             super.onBackPressed()
         }
+    }
+
+
+    private fun validation(): Boolean {
+        val email = emailInput.text.toString()
+        val password = passwordInput.text.toString()
+
+        if (isEmailValid(email) && isPasswordValid(password))
+            return true
+        if (!isEmailValid(email)) {
+            emailInput.error = getString(R.string.email_error)
+        }
+        if (!isPasswordValid(password)) {
+            passwordInput.error = getString(R.string.password_error)
+        }
+        return false
     }
 }

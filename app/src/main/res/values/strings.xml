@@ -39,4 +39,7 @@
     <string name="back_to_main_screen">Back to main screen</string>
     <string name="try_again_later">Please try again later</string>
     <string name="something_went_wrong">Something went wrong…</string>
+    <string name="email_error">Email address has the wrong format</string>
+    <string name="password_error">The password should be at least 6 characters, have uppercase and lowercase letters, and at least one number and special character (! @ # $ % ^ &amp; * . ?)</string>
+    <string name="passwords_match_error">Passwords are not the same</string>
 </resources>

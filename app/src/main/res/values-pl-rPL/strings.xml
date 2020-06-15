@@ -40,4 +40,7 @@
     <string name="back_to_main_screen">Powrót do strony głównej</string>
     <string name="try_again_later">Spróbuj ponownie później</string>
     <string name="something_went_wrong">Coś poszło nie tak…</string>
+    <string name="email_error">Adres email ma zły format</string>
+    <string name="password_error">Hasło powinno mieć przynajmniej 6 znaków, posiadać duże i małe litery oraz przynajmniej jedną cyfrę i znak specjalny (! @ # $ % ^ &amp; * . ?)</string>
+    <string name="passwords_match_error">Hasła nie są takie same</string>
 </resources>
