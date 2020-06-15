@@ -30,9 +30,14 @@
     <string name="sign_up">Zarejestruj się</string>
     <string name="logout">Wyloguj się</string>
     <string name="templates">Szablony</string>
-    <string name="already_in_yor_list">Już dodane do twojej listy</string>
+    <string name="already_in_yor_list">Już dodane do twojej listy</string>Coś poszło nie tak
     <string name="add_to_your_list">Dodaj do swojej listy</string>
     <string name="dont_have_account">Nie masz konta? Zarejestruj się</string>
     <string name="have_account">Masz konto? Zaloguj się</string>
     <string name="you_add_everything_from_this_list">Z tej listy dodałeś już wszystko</string>
+    <string name="it_all_right">Wszystko w porządku</string>
+    <string name="continue_play"><![CDATA[Możesz kontynułować zabawę :)]]></string>
+    <string name="back_to_main_screen">Powrót do strony głównej</string>
+    <string name="try_again_later">Spróbuj ponownie później</string>
+    <string name="something_went_wrong">Coś poszło nie tak…</string>
 </resources>

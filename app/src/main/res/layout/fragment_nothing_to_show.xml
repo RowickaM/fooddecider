@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    tools:context=".view.fragment.NothingToShowFragment">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieAnimationView"
@@ -14,8 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_fileName="avocado.json"
-        app:lottie_loop="true"
-        tools:context=".view.fragment.NothingToShowFragment" />
+        app:lottie_loop="true" />
 
     <TextView
         android:layout_width="wrap_content"

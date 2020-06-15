@@ -11,12 +11,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gunginr.dinnerdecider.R
 import com.gunginr.dinnerdecider.model.DishesTemplate
 import com.gunginr.dinnerdecider.model.FoodCategory
+import com.gunginr.dinnerdecider.util.goToAndCloseLast
 import com.gunginr.dinnerdecider.util.imageFromBase64
 import com.gunginr.dinnerdecider.util.navigation.AppToolbar
 import com.gunginr.dinnerdecider.util.setBtnEnabled
 import com.gunginr.dinnerdecider.util.storagedata.readFromSharedPref
 import com.gunginr.dinnerdecider.util.storagedata.writeToSharedPref
 import com.gunginr.dinnerdecider.util.variables.DISHES_KEY
+import com.gunginr.dinnerdecider.view.activity.information.ConfirmationActivity
+import com.gunginr.dinnerdecider.view.activity.information.ErrorActivity
 import com.gunginr.dinnerdecider.view.adapter.FoodAlreadyAddedAdapter
 import com.gunginr.dinnerdecider.view.adapter.FoodTemplateAdapter
 import com.gunginr.dinnerdecider.view.adapter.TagCategoryAdapter
@@ -66,7 +69,7 @@ class TemplateListActivity : AppCompatActivity() {
 
             buttonAdd.setOnClickListener { addToList() }
         } else {
-
+            goToAndCloseLast(ErrorActivity::class.java)
         }
     }
 
@@ -87,7 +90,7 @@ class TemplateListActivity : AppCompatActivity() {
         writeToSharedPref(this, existList)
 
         buttonAdd.setBtnEnabled(this, false)
-        finish()
+        goToAndCloseLast(ConfirmationActivity::class.java)
     }
 
     private fun getItemToAdd(listToAdd: ArrayList<DishesTemplate>): ArrayList<String> {

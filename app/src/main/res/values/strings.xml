@@ -34,4 +34,9 @@
     <string name="dont_have_account">You do not have an account? Sing up</string>
     <string name="have_account">Do you have an account? Sign in</string>
     <string name="you_add_everything_from_this_list">You add everything from this list</string>
+    <string name="it_all_right">Everything is fine</string>
+    <string name="continue_play"><![CDATA[You can keep going :)]]></string>
+    <string name="back_to_main_screen">Back to main screen</string>
+    <string name="try_again_later">Please try again later</string>
+    <string name="something_went_wrong">Something went wrong…</string>
 </resources>

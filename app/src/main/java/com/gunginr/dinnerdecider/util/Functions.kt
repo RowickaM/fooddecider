@@ -37,6 +37,11 @@ fun Activity.goTo(destination: Class<*>) {
     this.startActivity(Intent(this, destination))
 }
 
+fun Activity.goToAndCloseLast(destination: Class<*>) {
+    this.finish()
+    this.startActivity(Intent(this, destination))
+}
+
 fun Activity.goToAndCloseOther(destination: Class<*>) {
     this.finishAffinity()
     this.startActivity(Intent(this, destination))
