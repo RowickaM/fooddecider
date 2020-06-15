@@ -12,6 +12,7 @@ import com.gunginr.dinnerdecider.model.DishesTemplate
 import com.gunginr.dinnerdecider.model.FoodCategory
 import com.gunginr.dinnerdecider.util.imageFromBase64
 import com.gunginr.dinnerdecider.util.storagedata.readFromSharedPref
+import com.gunginr.dinnerdecider.util.storagedata.writeToSharedPref
 import com.gunginr.dinnerdecider.util.variables.DISHES_KEY
 import com.gunginr.dinnerdecider.view.adapter.FoodAlreadyAddedAdapter
 import com.gunginr.dinnerdecider.view.adapter.FoodTemplateAdapter
@@ -50,7 +51,32 @@ class TemplateListActivity : AppCompatActivity() {
 
             toAddList.adapter = adapterToAddList
             alreadyAddedList.adapter = adapterAlreadyAddedList
+
+
+            buttonAdd.setOnClickListener { addToList() }
+        } else {
+
         }
+    }
+
+    private fun addToList() {
+        buttonAdd.isEnabled = false
+        val existList = readFromSharedPref(this)
+        existList.addAll(getItemToAdd(listToAdd))
+
+        writeToSharedPref(this, existList)
+
+        buttonAdd.isEnabled = true
+        finish()
+    }
+
+    private fun getItemToAdd(listToAdd: ArrayList<DishesTemplate>): ArrayList<String> {
+        val list = listToAdd.filter { it.add }
+        val result = arrayListOf<String>()
+        for (dishes in list) {
+            result.add(dishes.name)
+        }
+        return result
     }
 
     private fun setHeader(item: FoodCategory) {
