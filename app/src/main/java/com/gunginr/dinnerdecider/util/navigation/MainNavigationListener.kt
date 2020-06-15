@@ -10,7 +10,11 @@ import com.gunginr.dinnerdecider.R
 import com.gunginr.dinnerdecider.services.firebase.FirebaseAuthorisation
 import com.gunginr.dinnerdecider.util.goTo
 import com.gunginr.dinnerdecider.util.goToAndCloseOther
-import com.gunginr.dinnerdecider.view.activity.*
+import com.gunginr.dinnerdecider.view.activity.ChangeLanguageActivity
+import com.gunginr.dinnerdecider.view.activity.DecideActivity
+import com.gunginr.dinnerdecider.view.activity.ShowSaveActivity
+import com.gunginr.dinnerdecider.view.activity.authorization.LoginActivity
+import com.gunginr.dinnerdecider.view.activity.templates.TemplatesActivity
 
 class MainNavigationListener(val activity: Activity, private val drawerLayout: DrawerLayout) :
     NavigationView.OnNavigationItemSelectedListener {

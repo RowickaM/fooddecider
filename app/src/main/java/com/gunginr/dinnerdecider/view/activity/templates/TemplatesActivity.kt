@@ -1,4 +1,4 @@
-package com.gunginr.dinnerdecider.view.activity
+package com.gunginr.dinnerdecider.view.activity.templates
 
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -47,7 +47,10 @@ class TemplatesActivity : BaseActivity() {
                     "chicken"
                 ),
                 arrayListOf(
-                    "rice with Chicken"
+                    "Rice with chicken",
+                    "Chili con Carne",
+                    "Macaroni and cheese",
+                    "Suflet"
                 )
             ),
             FoodCategory(

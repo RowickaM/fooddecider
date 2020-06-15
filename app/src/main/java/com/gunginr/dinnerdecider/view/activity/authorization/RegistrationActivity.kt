@@ -1,4 +1,4 @@
-package com.gunginr.dinnerdecider.view.activity
+package com.gunginr.dinnerdecider.view.activity.authorization
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

@@ -30,4 +30,8 @@
     <string name="sign_up">Zarejestruj się</string>
     <string name="logout">Wyloguj się</string>
     <string name="templates">Szablony</string>
+    <string name="already_in_yor_list">Już dodane do twojej listy</string>
+    <string name="add_to_your_list">Dodaj do swojej listy</string>
+    <string name="dont_have_account">Nie masz konta? Zarejestruj się</string>
+    <string name="have_account">Masz konto? Zaloguj się</string>
 </resources>

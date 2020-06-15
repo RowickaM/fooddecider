@@ -29,4 +29,8 @@
     <string name="sign_up">Sing up</string>
     <string name="logout">Logout</string>
     <string name="templates">Templates</string>
+    <string name="already_in_yor_list">Already in yor list</string>
+    <string name="add_to_your_list">Add to your list</string>
+    <string name="dont_have_account">You do not have an account? Sing up</string>
+    <string name="have_account">Do you have an account? Sign in</string>
 </resources>

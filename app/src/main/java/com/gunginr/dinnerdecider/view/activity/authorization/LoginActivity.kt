@@ -1,4 +1,4 @@
-package com.gunginr.dinnerdecider.view.activity
+package com.gunginr.dinnerdecider.view.activity.authorization
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import com.gunginr.dinnerdecider.R
 import com.gunginr.dinnerdecider.services.firebase.FirebaseAuthorisation
 import com.gunginr.dinnerdecider.util.goTo
 import com.gunginr.dinnerdecider.util.goToAndCloseOther
+import com.gunginr.dinnerdecider.view.activity.DecideActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {

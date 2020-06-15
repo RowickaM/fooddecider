@@ -19,6 +19,7 @@ import com.gunginr.dinnerdecider.util.snackbars.createErrorSnackBar
 import com.gunginr.dinnerdecider.util.snackbars.createInfoSnackBar
 import com.gunginr.dinnerdecider.util.storagedata.writeToSharedPref
 import com.gunginr.dinnerdecider.util.variables.LANGUAGE_BUNDLE_SUCCESS
+import com.gunginr.dinnerdecider.view.activity.authorization.LoginActivity
 import kotlinx.android.synthetic.main.activity_decide.*
 import kotlin.random.Random
 
